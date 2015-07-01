@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.dukecon</groupId>
+    <artifactId>dukecon-server-docker</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>dukecon-server-springboot</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jolokia</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.12.0</version>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>ascheman/dukecon-server:${project.version}</name>
+                            <build>
+                                <from>java:8u45</from>
+                                <maintainer>gerd@aschemann.net</maintainer>
+                                <tags>
+                                    <tag>latest</tag>
+                                    <tag>${project.version}</tag>
+                                </tags>
+                                <ports>
+                                    <port>8080</port>
+                                </ports>
+                                <entryPoint>
+                                    <!-- exec form for ENTRYPOINT -->
+                                    <exec>
+                                        <arg>java</arg>
+                                        <arg>-jar</arg>
+                                        <arg>/opt/dukecon/dukecon.war</arg>
+                                    </exec>
+                                </entryPoint>
+
+                                <assembly>
+                                    <basedir>/opt/dukecon</basedir>
+                                    <inline
+                                        xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+                                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                        xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+                                        <id>dukecon-server</id>
+                                        <dependencySets>
+                                            <dependencySet>
+                                                <includes>
+                                                    <include>org.dukecon:dukecon-server-springboot</include>
+                                                </includes>
+                                                <outputDirectory>.</outputDirectory>
+                                                <outputFileNameMapping>dukecon.war</outputFileNameMapping>
+                                            </dependencySet>
+                                        </dependencySets>
+                                    </inline>
+                                </assembly>
+                            </build>
+                            <run>
+                                <ports>
+                                    <!-- Port mappings: Container internal 
+                                        port (which must be exposed) will be dynamically mapped and this (random) 
+                                        port will be assigned to the maven variable ${tomcat.port}. Multiple port 
+                                        mapping can be specified here -->
+                                    <port>dukecon.port:8080</port>
+                                </ports>
+                                <wait>
+                                    <!-- The plugin waits until this URL 
+                                        is reachable via HTTP ... -->
+                                    <url>http://localhost:${dukecon.port}/public/index.html</url>
+                                    <!-- ... but at max 30 seconds -->
+                                    <time>30000</time>
+                                </wait>
+                            </run>
+                        </image>
+                    </images>
+                </configuration>
+                <!-- Connect this plugin to the maven lifecycle around the 
+                    integration-test phase. I.e. start the container in pre-integration-test 
+                    and stop it in post-integration-test. -->
+                <executions>
+                    <execution>
+                        <id>start</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>stop</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
