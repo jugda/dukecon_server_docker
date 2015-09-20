@@ -75,7 +75,7 @@
                                 <wait>
                                     <!-- The plugin waits until this URL 
                                         is reachable via HTTP ... -->
-                                    <url>http://localhost:${dukecon.port}/public/index.html</url>
+                                    <url>http://localhost:${dukecon.port}/develop/index.html</url>
                                     <!-- ... but at max 30 seconds -->
                                     <time>30000</time>
                                 </wait>
