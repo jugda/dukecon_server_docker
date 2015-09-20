@@ -39,6 +39,7 @@
                                     <!-- exec form for ENTRYPOINT -->
                                     <exec>
                                         <arg>java</arg>
+					<arg>-Djava.security.egd=file:/dev/./urandom</arg>
                                         <arg>-jar</arg>
                                         <arg>/opt/dukecon/dukecon.war</arg>
                                     </exec>
