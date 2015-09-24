@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.dukecon</groupId>
     <artifactId>dukecon-server-docker</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <dependencies>
@@ -39,7 +39,7 @@
                                     <!-- exec form for ENTRYPOINT -->
                                     <exec>
                                         <arg>java</arg>
-					<arg>-Djava.security.egd=file:/dev/./urandom</arg>
+					                    <arg>-Djava.security.egd=file:/dev/./urandom</arg>
                                         <arg>-jar</arg>
                                         <arg>/opt/dukecon/dukecon.war</arg>
                                     </exec>
@@ -77,7 +77,7 @@
                                         is reachable via HTTP ... -->
                                     <url>http://localhost:${dukecon.port}/develop/index.html</url>
                                     <!-- ... but at max 30 seconds -->
-                                    <time>30000</time>
+                                    <time>90000</time>
                                 </wait>
                             </run>
                         </image>
