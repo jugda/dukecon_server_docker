@@ -29,7 +29,7 @@
                                 <from>java:8u45</from>
                                 <maintainer>gerd@aschemann.net</maintainer>
                                 <tags>
-                                    <tag>latest</tag>
+                                    <tag>latest-release-candidate</tag>
                                     <tag>${project.version}</tag>
                                 </tags>
                                 <ports>
