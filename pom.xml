@@ -20,7 +20,7 @@
             <plugin>
                 <groupId>org.jolokia</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.12.0</version>
+                <version>0.13.2</version>
                 <configuration>
                     <images>
                         <image>
@@ -35,8 +35,11 @@
                                 <ports>
                                     <port>8080</port>
                                 </ports>
+                                <volumes>
+                                    <volume>/var/cache/dukecon</volume>
+                                </volumes>
                                 <entryPoint>
-                                    <!-- exec form for ENTRYPOINT -->
+                                        <!-- exec form for ENTRYPOINT -->
                                     <exec>
                                         <arg>java</arg>
 					                    <arg>-Djava.security.egd=file:/dev/./urandom</arg>
