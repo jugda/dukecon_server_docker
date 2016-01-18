@@ -38,15 +38,9 @@
                                 <volumes>
                                     <volume>/var/cache/dukecon</volume>
                                 </volumes>
-                                <entryPoint>
-                                        <!-- exec form for ENTRYPOINT -->
-                                    <exec>
-                                        <arg>java</arg>
-					                    <arg>-Djava.security.egd=file:/dev/./urandom</arg>
-                                        <arg>-jar</arg>
-                                        <arg>/opt/dukecon/dukecon.war</arg>
-                                    </exec>
-                                </entryPoint>
+                                <cmd>
+                                    <shell>java -Djava.security.egd=file:/dev/./urandom -jar /opt/dukecon/dukecon.war ${DUKECON_ARGS}</shell>
+                                </cmd>
 
                                 <assembly>
                                     <basedir>/opt/dukecon</basedir>
