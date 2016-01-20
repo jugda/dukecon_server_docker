@@ -6,6 +6,54 @@
     <version>1.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <scm>
+        <url>https://github.com/dukecon/dukecon_server_docker</url>
+        <connection>scm:git:https://github.com/dukecon/dukecon_server_docker.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Set this to localhost if you would like to test upload server -->
+        <nexus.repository.host>dev.dukecon.org</nexus.repository.host>
+        <nexus.repository.port />
+        <nexus.repository.base>/nexus</nexus.repository.base>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>dukecon</id>
+            <url>http://${nexus.repository.host}${nexus.repository.port}${nexus.repository.base}/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>dukecon</id>
+            <url>http://${nexus.repository.host}${nexus.repository.port}${nexus.repository.base}/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>dukecon</id>
+            <name>DukeCon Snapshots</name>
+            <url>http://${nexus.repository.host}${nexus.repository.port}${nexus.repository.base}/content/repositories/snapshots</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -17,6 +65,11 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+            </plugin>
             <plugin>
                 <groupId>org.jolokia</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
