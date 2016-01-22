@@ -78,7 +78,7 @@
                         <image>
                             <name>ascheman/dukecon-server:${project.version}</name>
                             <build>
-                                <from>java:8u45</from>
+                                <from>java:8u66</from>
                                 <maintainer>gerd@aschemann.net</maintainer>
                                 <tags>
                                     <tag>latest</tag>
