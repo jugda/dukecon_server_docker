@@ -93,6 +93,7 @@
                                 <cmd>
                                     <shell>java -Xms256M -Xmx768M -Djava.security.egd=file:/dev/./urandom -jar /opt/dukecon/dukecon.war ${DUKECON_ARGS}</shell>
                                 </cmd>
+                                <cleanup>false</cleanup>
 
                                 <assembly>
                                     <basedir>/opt/dukecon</basedir>
