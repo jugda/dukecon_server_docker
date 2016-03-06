@@ -96,14 +96,22 @@
                                     <volume>/var/cache/dukecon</volume>
                                 </volumes>
                                 <cmd>
-                                    <shell>java -Xms256M -Xmx768M -Djava.security.egd=file:/dev/./urandom -jar /opt/dukecon/dukecon.war ${DUKECON_ARGS}</shell>
+                                    <shell>java -Xms256M -Xmx768M -Djava.security.egd=file:/dev/./urandom -javaagent:/opt/dukecon/agent/inspectit-agent.jar -Dinspectit.config=/opt/dukecon/agent/config -jar /opt/dukecon/dukecon.war ${DUKECON_ARGS}</shell>
                                 </cmd>
                                 <cleanup>false</cleanup>
 
                                 <assembly>
                                     <basedir>/opt/dukecon</basedir>
+                                    <!--<dockerFileDir>baseDir</dockerFileDir>-->
                                     <inline xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2" xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
                                         <id>dukecon-server</id>
+                                        <fileSets>
+                                            <fileSet>
+                                                <directory>${project.basedir}/agent</directory>
+                                                <outputDirectory>agent</outputDirectory>
+                                                <fileMode>755</fileMode>
+                                            </fileSet>
+                                        </fileSets>
                                         <dependencySets>
                                             <dependencySet>
                                                 <includes>
@@ -116,11 +124,12 @@
                                                 <includes>
                                                     <include>eu.inspectit.rocks:inspectit-agent</include>
                                                 </includes>
-                                                <outputDirectory>.</outputDirectory>
+                                                <outputDirectory>agent</outputDirectory>
                                                 <outputFileNameMapping>inspectit-agent.jar</outputFileNameMapping>
                                             </dependencySet>
                                         </dependencySets>
                                     </inline>
+                                    <descriptorRef>project</descriptorRef>
                                 </assembly>
                             </build>
                             <run>
