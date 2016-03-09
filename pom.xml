@@ -81,7 +81,6 @@
                                 <from>java:8u66</from>
                                 <maintainer>gerd@aschemann.net</maintainer>
                                 <tags>
-                                    <tag>release-candidate</tag>
                                     <tag>${project.version}</tag>
                                 </tags>
                                 <ports>
