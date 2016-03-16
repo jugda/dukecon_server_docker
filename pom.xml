@@ -7,7 +7,7 @@
 
     <scm>
         <url>https://github.com/dukecon/dukecon_server_docker.git</url>
-        <connection>scm:git:git@github.com/dukecon/dukecon_server_docker.git</connection>
+        <connection>scm:git:git@github.com:dukecon/dukecon_server_docker.git</connection>
     </scm>
 
     <properties>
