@@ -103,7 +103,7 @@
                                     <volume>/var/cache/dukecon</volume>
                                 </volumes>
                                 <cmd>
-                                    <shell>java -Xms256M -Xmx768M -Djava.security.egd=file:/dev/./urandom -jar /opt/dukecon/dukecon.war ${DUKECON_ARGS}</shell>
+                                    <shell>java -cp /opt/dukecon/lib -Xms256M -Xmx768M -Djava.security.egd=file:/dev/./urandom -jar /opt/dukecon/dukecon.war ${DUKECON_ARGS}</shell>
                                 </cmd>
                                 <cleanup>false</cleanup>
 
