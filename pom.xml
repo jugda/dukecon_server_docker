@@ -139,6 +139,10 @@
                                     <!-- ... but at max 90 seconds -->
                                     <time>90000</time>
                                 </wait>
+                                <log>
+                                    <color>BLUE</color>
+                                    <file>docker.log</file>
+                                </log>
                             </run>
                         </image>
                     </images>
