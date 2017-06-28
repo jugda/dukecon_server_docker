@@ -105,7 +105,6 @@
                                 <from>java:8u91</from>
                                 <maintainer>gerd@aschemann.net</maintainer>
                                 <tags>
-                                    <tag>latest</tag>
                                     <tag>${project.version}</tag>
                                 </tags>
                                 <ports>
