@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.dukecon</groupId>
     <artifactId>dukecon-server-docker</artifactId>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <scm>
@@ -16,6 +16,8 @@
         <nexus.repository.host>dev.dukecon.org</nexus.repository.host>
         <nexus.repository.port />
         <nexus.repository.base>/nexus</nexus.repository.base>
+
+        <dukecon.version>1.4-SNAPSHOT</dukecon.version>
     </properties>
 
     <repositories>
@@ -61,10 +63,19 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>dukecon-server-springboot</artifactId>
-            <version>[1.3.0,1.4.0)</version>
+            <version>${dukecon.version}</version>
             <type>war</type>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <properties>
+                <dukecon.version>[1.4.0,1.5.0)</dukecon.version>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <defaultGoal>docker:build</defaultGoal>
