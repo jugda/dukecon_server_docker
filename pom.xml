@@ -103,8 +103,11 @@
                                 <volumes>
                                     <volume>/var/cache/dukecon</volume>
                                 </volumes>
+                                <env>
+                                    <JAVA_DEFAULT_OPTS>-Xms256M -Xmx768M</JAVA_DEFAULT_OPTS>
+                                </env>
                                 <cmd>
-                                    <shell>java -Xms256M -Xmx768M -Djava.security.egd=file:/dev/./urandom -jar /opt/dukecon/dukecon.war ${DUKECON_ARGS}</shell>
+                                    <shell>java -Djava.security.egd=file:/dev/./urandom ${JAVA_DEFAULT_OPTS} ${JAVA_OPTS} -jar /opt/dukecon/dukecon.war ${DUKECON_ARGS}</shell>
                                 </cmd>
                                 <workdir>/opt/dukecon</workdir>
                                 <cleanup>false</cleanup>
