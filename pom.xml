@@ -61,9 +61,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>org.dukecon</groupId>
             <artifactId>dukecon-server-springboot</artifactId>
-            <version>${dukecon.version}</version>
+            <version>1.4-SNAPSHOT</version>
             <type>war</type>
         </dependency>
     </dependencies>
@@ -85,6 +85,12 @@
                     <groupId>com.github.danielflower.mavenplugins</groupId>
                     <artifactId>multi-module-maven-release-plugin</artifactId>
                     <version>DC-1.5-SNAPSHOT</version>
+                    <configuration>
+                        <resolveSnapshots>
+                            <!-- TODO: allow for usage of a version property -->
+                            <resolveSnapshot>org.dukecon:dukecon-server-springboot1.4-SNAPSHOT</resolveSnapshot>
+                        </resolveSnapshots>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -100,7 +106,7 @@
                 <configuration>
                     <images>
                         <image>
-                            <name>ascheman/dukecon-server:${project.version}</name>
+                            <name>dukecon/dukecon-server:${project.version}</name>
                             <build>
                                 <from>openjdk:8-jre-alpine</from>
                                 <maintainer>gerd@aschemann.net</maintainer>
