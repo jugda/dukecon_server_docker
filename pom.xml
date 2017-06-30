@@ -102,7 +102,7 @@
                         <image>
                             <name>ascheman/dukecon-server:${project.version}</name>
                             <build>
-                                <from>java:8u91</from>
+                                <from>openjdk:8-jre-alpine</from>
                                 <maintainer>gerd@aschemann.net</maintainer>
                                 <tags>
                                     <tag>${project.version}</tag>
