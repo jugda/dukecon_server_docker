@@ -74,6 +74,12 @@
                     <groupId>com.github.danielflower.mavenplugins</groupId>
                     <artifactId>multi-module-maven-release-plugin</artifactId>
                     <version>DC-1.5-SNAPSHOT</version>
+                    <configuration>
+                        <resolveSnapshots>
+                            <!-- TODO: allow for usage of a version property -->
+                            <resolveSnapshot>org.dukecon:dukecon-server-springboot1.3-SNAPSHOT</resolveSnapshot>
+                        </resolveSnapshots>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
