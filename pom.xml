@@ -59,7 +59,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>org.dukecon</groupId>
             <artifactId>dukecon-server-springboot</artifactId>
             <version>1.3-SNAPSHOT</version>
             <type>war</type>
