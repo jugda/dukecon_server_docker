@@ -154,7 +154,7 @@
                                 </ports>
                                 <wait>
                                     <!-- The plugin waits until this URL is reachable via HTTP ... -->
-                                    <url>http://${docker.host.address}:${dukecon.port}/develop/index.html</url>
+                                    <url>http://${docker.host.address}:${dukecon.port}/index.html</url>
                                     <!-- ... but at max 90 seconds -->
                                     <time>90000</time>
                                 </wait>
