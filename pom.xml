@@ -17,6 +17,8 @@
         <nexus.repository.port />
         <nexus.repository.base>/nexus</nexus.repository.base>
 
+        <!-- Max 120 seconds to wait until docker start finished -->
+        <uptime-max>120000</uptime-max>
         <dukecon.version>1.4-SNAPSHOT</dukecon.version>
     </properties>
 
@@ -155,8 +157,7 @@
                                 <wait>
                                     <!-- The plugin waits until this URL is reachable via HTTP ... -->
                                     <url>http://${docker.host.address}:${dukecon.port}/index.html</url>
-                                    <!-- ... but at max 90 seconds -->
-                                    <time>90000</time>
+                                    <time>${uptime-max}</time>
                                 </wait>
                                 <log>
                                     <color>BLUE</color>
