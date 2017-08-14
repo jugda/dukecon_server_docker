@@ -114,7 +114,7 @@
                                 <maintainer>gerd@aschemann.net</maintainer>
                                 <tags>
                                     <tag>${project.version}</tag>
-                                    <tag>unstable</tag>
+                                    <tag>latest</tag>
                                 </tags>
                                 <ports>
                                     <port>8080</port>
