@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.dukecon</groupId>
     <artifactId>dukecon-server-docker</artifactId>
-    <version>1.4-SNAPSHOT</version>
+    <version>1.5-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <scm>
@@ -19,7 +19,7 @@
 
         <!-- Max 120 seconds to wait until docker start finished -->
         <uptime-max>120000</uptime-max>
-        <dukecon.version>1.4-SNAPSHOT</dukecon.version>
+        <dukecon.version>${project.version}</dukecon.version>
     </properties>
 
     <repositories>
@@ -65,7 +65,7 @@
         <dependency>
             <groupId>org.dukecon</groupId>
             <artifactId>dukecon-server-springboot</artifactId>
-            <version>1.4-SNAPSHOT</version>
+            <version>${dukecon.version}</version>
             <type>war</type>
         </dependency>
     </dependencies>
@@ -114,6 +114,7 @@
                                 <maintainer>gerd@aschemann.net</maintainer>
                                 <tags>
                                     <tag>${project.version}</tag>
+                                    <tag>unstable</tag>
                                 </tags>
                                 <ports>
                                     <port>8080</port>
