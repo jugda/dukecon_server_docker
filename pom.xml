@@ -113,6 +113,7 @@
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <configuration>
+                    <imagePullPolicy>always</imagePullPolicy>
                     <images>
                         <image>
                             <name>dukecon/dukecon-server:${project.version}</name>
