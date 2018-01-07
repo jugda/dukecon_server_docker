@@ -17,6 +17,9 @@
         <nexus.repository.port />
         <nexus.repository.base>/nexus</nexus.repository.base>
 
+        <!--Versions of Plugins and Dependencies-->
+        <docker-maven-plugin.version>0.23.0</docker-maven-plugin.version>
+
         <!-- Max 120 seconds to wait until docker start finished -->
         <uptime-max>120000</uptime-max>
         <dukecon.version>${project.version}</dukecon.version>
@@ -94,6 +97,11 @@
                         </resolveSnapshots>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${docker-maven-plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -104,7 +112,6 @@
             <plugin>
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.21.0</version>
                 <configuration>
                     <images>
                         <image>
