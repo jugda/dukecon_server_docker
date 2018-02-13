@@ -165,7 +165,7 @@
                                 </ports>
                                 <wait>
                                     <!-- The plugin waits until this URL is reachable via HTTP ... -->
-                                    <url>http://${docker.host.address}:${dukecon.port}/index.html</url>
+                                    <url>http://${docker.host.address}:${dukecon.port}/health</url>
                                     <time>${uptime-max}</time>
                                 </wait>
                                 <log>
