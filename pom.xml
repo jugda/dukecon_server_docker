@@ -163,6 +163,9 @@
                                         mapping can be specified here -->
                                     <port>dukecon.port:8080</port>
                                 </ports>
+                                <env>
+                                    <DUKECON_ARGS>--conferences.file=conferences-integrationtest.yml</DUKECON_ARGS>
+                                </env>
                                 <wait>
                                     <!-- The plugin waits until this URL is reachable via HTTP ... -->
                                     <url>http://${docker.host.address}:${dukecon.port}/health</url>
